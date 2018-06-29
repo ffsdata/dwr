@@ -1182,6 +1182,13 @@ public final class LocalUtil
             clazz = Thread.currentThread().getContextClassLoader().loadClass(remappedClassName);
         } catch(ClassNotFoundException ex) {
             clazz = LocalUtil.class.getClassLoader().loadClass(remappedClassName);
+        } catch(IllegalArgumentException ex) {
+            // FIXME this is to get DWR working in a Spring Boot JAR application
+            // https://github.com/directwebremoting/dwr/issues/2
+            if (remappedClassName.startsWith("response:")) {
+                remappedClassName = remappedClassName.substring(9);
+            }
+            clazz = LocalUtil.class.getClassLoader().loadClass(remappedClassName);
         }
         return clazz;
     }
