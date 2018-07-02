@@ -30,8 +30,5 @@ public interface DwrConstants
     /**
      * The default dwr.xml file path
      */
-    //public static final String USER_DWR_XML_PATH = "/WEB-INF/dwr.xml";
-
-    // FIXME just trying to get this file to be found when using a Spring Boot JAR
-    public static final String USER_DWR_XML_PATH = "/BOOT-INF/classes/WEB-INF/dwr.xml";
+    public static final String USER_DWR_XML_PATH = "/WEB-INF/dwr.xml";
 }
